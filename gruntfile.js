@@ -138,15 +138,6 @@ module.exports = function(grunt) {
                 files: ['src/html/*.html', 'src/html/*/*.html'],
                 tasks: ['includereplace']
             }
-        },
-
-        connect: {
-            server: {
-                options: {
-                    post: 8000,
-                    base: 'production'
-                }
-            }
         }
 
     });
@@ -155,7 +146,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', ['copy', 'includereplace', 'concat', 'imagemin', 'sass',
      'autoprefixer', 'uglify', 'cssmin']);
-    grunt.registerTask('run', ['connect', 'copy', 'includereplace', 'concat', 'imagemin',
+    grunt.registerTask('run', ['copy', 'includereplace', 'concat', 'imagemin',
         'sass', 'autoprefixer', 'uglify', 'cssmin', 'watch']);
     grunt.registerTask('default', ['run'])
 

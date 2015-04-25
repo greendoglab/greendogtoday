@@ -6,6 +6,7 @@ from django.conf import settings
 from utils import *
 from taggit.managers import TaggableManager
 from taggit.models import TagBase, GenericTaggedItemBase
+import re
 
 
 class Tag(TagBase):
@@ -13,13 +14,13 @@ class Tag(TagBase):
     content = models.TextField('Content', help_text='Markdown', blank=True)
 
     def get_poster(self):
-        return MakeImage(self.image, settings.POSTER_THUMBS_SIZE, crop='center')
+        return MakeImage(self.poster, settings.POSTER_THUMBS_SIZE, crop='center')
 
     def get_mobile_poster(self):
-        return MakeImage(self.image, settings.POSTER_SMALL_THUMBS_SIZE, crop='center')
+        return MakeImage(self.poster, settings.POSTER_SMALL_THUMBS_SIZE, crop='center')
 
     def get_squae_poster(self):
-        return MakeImage(self.image, settings.SQUARE_THUMBS_SIZE, crop='center')
+        return MakeImage(self.poster, settings.SQUARE_THUMBS_SIZE, crop='center')
 
     def get_content(self):
         return MakeContent(self.content)
@@ -59,13 +60,20 @@ class Post(models.Model):
         return self.title
 
     def get_poster(self):
-        return MakeImage(self.image, settings.POSTER_THUMBS_SIZE, crop='center')
+        return MakeImage(self.poster, settings.POSTER_THUMBS_SIZE, crop='center')
 
     def get_mobile_poster(self):
-        return MakeImage(self.image, settings.POSTER_SMALL_THUMBS_SIZE, crop='center')
+        return MakeImage(self.poster, settings.POSTER_SMALL_THUMBS_SIZE, crop='center')
 
     def get_squae_poster(self):
-        return MakeImage(self.image, settings.SQUARE_THUMBS_SIZE, crop='center')
+        return MakeImage(self.poster, settings.SQUARE_THUMBS_SIZE, crop='center')
+
+    def get_short_content(self):
+        content_truncate = MakeContent(self.content)
+        content_truncate = re.sub('<[^>]*>', '', content_truncate)
+        content_truncate = re.sub(r'<img.*?/>', '', content_truncate)
+        content_truncate = content_truncate[:180] + "..."
+        return MakeContent(content_truncate)
 
     def get_content(self):
         return MakeContent(self.content)

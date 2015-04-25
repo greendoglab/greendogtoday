@@ -1,0 +1,11 @@
+.post-aside {
+    > * + * {
+        margin-top: 40px;
+    } // > * + *
+    * {
+        .aside-title {
+            font-size: rem(18);
+            font-weight: bold;
+        } // h3
+    }
+} // post-aside

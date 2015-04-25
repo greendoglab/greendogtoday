@@ -1,0 +1,36 @@
+.poster {
+    @include table;
+    @include bp(xs) {
+        display: none;
+    } // xs
+    .poster-content {
+        @include table-cell;
+        vertical-align: middle;
+        text-align: center;
+        background-size: cover !important;
+        background-position: center center !important;
+        height: 50vh;
+        span {
+            color: white;
+            text-align: center;
+            display: inline-block;
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 100px;
+        } // span
+        i {
+            display: block;
+            margin: 30px auto;
+            width: 28px;
+            height: 22px;
+            color: white;
+            &:before {
+                content: '\f078';
+                font: normal normal normal 26px/1 FontAwesome;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                font-weight: 200;
+            } // &:before
+        } // i
+    } // poster-content
+} // poster

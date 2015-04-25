@@ -5,6 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from itertools import chain
 from django.contrib.syndication.views import Feed
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from blog.models import Post
 
 
@@ -37,7 +38,7 @@ def SearchView(request):
 
     objects = list(object_list)
 
-    context = {'objects': objects, 'q': q}
+    context = {'posts': objects, 'q': q}
     template = template_name
     return render(request, template, context)
 
@@ -52,6 +53,9 @@ class AllFeed(Feed):
 
     def item_title(self, item):
         return item.title
+
+    def item_link(self, item):
+        return reverse('post', args=[item.slug])
 
     def item_description(self, item):
         return item.get_content()

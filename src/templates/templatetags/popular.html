@@ -1,0 +1,15 @@
+{% for item in items %}
+<li class="side-post">
+    <div class="image">
+        <a href="{{ item.get_url }}">
+            <img src="{{ item.get_squae_poster.url }}" alt="">
+        </a>
+    </div>
+    <div>
+        <h3>
+            <a href="{{ item.get_url }}">{{ item.title }}</a>
+        </h3>
+        <time>{{ item.date.date }}</time>
+    </div>
+</li>
+{% endfor %}

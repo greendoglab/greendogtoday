@@ -1,0 +1,46 @@
+.mobile-header {
+    background-color: #60E598;
+    display: none;
+    @include bp(xs) {
+        &.active {
+            display: block;
+        } // active
+    } // xs
+    @include bp(sm) {
+        &.active {
+            display: block;
+        } // active
+    } // sm
+    .mobile-top-menu {
+        @include clear-list;
+        text-align: center;
+        padding: 10px 0;
+        li {
+            padding: 10px 0;
+            a {
+                text-decoration: none;
+                color: white;
+            } // a
+            input {
+                padding: 10px;
+                border-radius: 2px;
+                border: 1px solid white;
+                width: calc(100% - 160px);
+            } // input
+            button {
+                i {
+                    width: 22px;
+                    height: 22px;
+                    color: white;
+                    &:before {
+                        content: '\f002';
+                        display: inline-block;
+                        font: normal normal normal 22px/1 FontAwesome;
+                        text-rendering: auto;
+                        -webkit-font-smoothing: antialiased;
+                    } // &:before
+                } // i
+            } // button
+        } // li
+    } // mobile-top-menu
+} // mobile-header

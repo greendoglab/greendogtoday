@@ -8,6 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -23,7 +25,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -32,7 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
     'sorl.thumbnail',
     'accounts',
     'blog',
@@ -50,10 +51,15 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'greendog.context_processors.debug',
+)
+
+# INTERNAL_IPS = ('127.0.0.1',)
+
 ROOT_URLCONF = 'greendog.urls'
 
 WSGI_APPLICATION = 'greendog.wsgi.application'
-
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),

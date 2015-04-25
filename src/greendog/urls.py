@@ -10,7 +10,7 @@ urlpatterns = patterns(
     url(r'^', include('blog.urls')),
     url(r'^', include('pages.urls')),
 
-    url(r'^feed/$', AllFeed()),
+    url(r'^rss/$', AllFeed()),
 
     # url(r'^redactor/', include('redactor.urls')),
     (r'^media/(.*)$', 'django.views.static.serve',

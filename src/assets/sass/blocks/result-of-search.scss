@@ -1,0 +1,8 @@
+.result-of-search {
+    @include container;
+    h4 {
+        color: #616161;
+        font-weight: bold;
+        font-size: rem(20);
+    } // h4
+} // result-of-search

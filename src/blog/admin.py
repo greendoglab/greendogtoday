@@ -30,6 +30,9 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
+    def get_author_name(self, obj):
+        return obj.author.name
+
     def image_display(self, obj):
         if obj.poster:
             thumb = default.backend.get_thumbnail(obj.poster, ADMIN_THUMBS_SIZE)
@@ -51,7 +54,7 @@ class PostAdmin(admin.ModelAdmin):
     )
     list_editable = ('status',)
     readonly_fields = ('views', 'slug')
-    list_display = ('title', 'image_display', 'date', 'status')
+    list_display = ('title', 'image_display', 'date', 'get_author_name', 'status', 'views')
     list_per_page = 15
 
     def save_model(self, request, obj, form, change):

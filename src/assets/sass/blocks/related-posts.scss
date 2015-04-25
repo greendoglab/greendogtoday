@@ -43,10 +43,15 @@
             line-height: 1;
             //padding-top: 10px;
             display: flex;
+            align-items: center;
             > div {
                 flex: 0 auto;
                 &.image {
+                    width: 60px;
                     margin-right: 10px;
+                    img {
+                        border-radius: 100%;
+                    } // img
                 } // &.image
             } // > div
             h3 {

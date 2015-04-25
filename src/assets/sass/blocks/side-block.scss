@@ -21,7 +21,11 @@
             > div {
                 flex: 0 auto;
                 &.image {
+                    width: 60px;
                     margin-right: 10px;
+                    img {
+                        border-radius: 100%;
+                    } // img
                 } // &.image
             } // > div
             h3 {

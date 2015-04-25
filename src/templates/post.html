@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- single-post -->
+<div class="single-post">
+    <header>
+        <div class="meta">
+            <div class="meta-block author-photo">
+                <a href="{{ post.author.get_url }}"><img src="{{ post.author.photo }}" alt=""></a>
+            </div>
+            <ul class="meta-block author-and-time">
+                <li><a href="#" class="author-name">{{ post.author.name }}</a></li>
+                <li><time>23 Апреля 2015</time></li>
+            </ul>
+            <nav class="meta-block tags">
+                <a href="">Travel</a>
+                <a href="">Philippines</a>
+                <a href="">Lapu-Lapu</a>
+            </nav>
+        </div>
+    </header>
+    <h2 class="article-title">Some travel in Philippines, when happynes come true</h2>
+    <article>
+        {{ post.get_content }}
+    </article>
+</div>
+<!-- /single-post -->
+
+<!-- post aside -->
+<aside class="post-aside">
+    <!-- social -->
+    <section class="post-social">
+        <h3 class="aside-title">Поделись заметкой с друзьями</h3>
+        <div class="social-likes" data-url="greendog.today" data-title="greendogtoday">
+            <div class="facebook" title="Поделиться ссылкой на Фейсбуке">Facebook</div>
+            <div class="twitter" data-via="greendogtoday" title="Поделиться ссылкой в Твиттере">Twitter</div>
+            <div class="plusone" title="Поделиться ссылкой в Гугл-плюсе">Google+</div>
+            <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media="">Pinterest</div>
+        </div>
+    </section>
+    <!-- /social -->
+
+    <!-- related-posts -->
+    <section class="related-posts">
+        <h3 class="aside-title">Ещё записи</h3>
+        <ul class="related-bottom">
+            {% for post in related_posts %}
+            <li class="side-post">
+                <div class="image">
+                    <img src="{{ post.get_squae_poster.url }}" alt="">
+                </div>
+                <div>
+                    <h3>
+                        <a href="{{ post.get_url }}">{{ post.title }}</a>
+                    </h3>
+                    <time>23 Апреля 2015</time>
+                </div>
+            </li>
+
+            {% endfor %}
+        </ul>
+    </section>
+    <!-- /related-posts -->
+
+    <!-- related-posts -->
+    <section class="post-comments">
+        <h3 class="aside-title">Комментарии</h3>
+    </section>
+    <!-- /related-posts -->
+</aside>
+<!-- /post aside -->
+{% endblock content %}

@@ -1,0 +1,22 @@
+// functions & mixins
+@import "animate.scss";
+@import "functions.scss";
+@import "mixins.scss";
+
+@import "variables.scss";
+@import "base.scss";
+
+// blocks
+@import "blocks/header.scss";
+@import "blocks/mobile-header.scss";
+@import "blocks/components.scss";
+@import "blocks/poster.scss";
+@import "blocks/site-container.scss";
+@import "blocks/post.scss";
+@import "blocks/side-block.scss";
+@import "blocks/pagination.scss";
+@import "blocks/footer.scss";
+@import "blocks/single-post.scss";
+@import "blocks/post-aside.scss";
+@import "blocks/related-posts.scss";
+@import "blocks/result-of-search.scss";

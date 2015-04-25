@@ -1,0 +1,26 @@
+.site-container {
+    margin-top: 30px;
+    @include container;
+    display: flex;
+    flex-flow: row nowrap;
+    .content {
+        flex: 1 65%;
+        padding-right: 15px;
+        @include bp(xs) {
+            padding-right: 0px;
+        } // xs
+        @include bp(sm) {
+            padding-right: 0px;
+        } // sm
+    } // content
+    .site-side {
+        flex: 1 35%;
+        padding-left: 15px;
+        @include bp(xs) {
+            display: none;
+        } // xs
+        @include bp(sm) {
+            display: none;
+        } // sm
+    } // site-side
+} // site-container

@@ -8,3 +8,19 @@
     </ul>
 </div>
 <!-- /side-block -->
+
+<!-- side-block -->
+<div class="side-block">
+    {% if DEBUG == false %}
+        {% include 'in_sideads.html' %}
+    {% endif %}
+</div>
+<!-- /side-block -->
+
+<!-- side-block -->
+<div class="side-block">
+    {% if DEBUG == false %}
+        {% include 'in_sideads_big.html' %}
+    {% endif %}
+</div>
+<!-- /side-block -->

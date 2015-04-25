@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block poster %}
-    {% if tag.poster %}
+    {% if author.poster %}
     <!-- poster -->
     <section class="poster">
-        <div class="poster-content" style="background-image: url({{ tag.get_poster.url }});"></div>
+        <div class="poster-content" style="background-image: url({{ author.get_poster.url }});"></div>
     </section>
     <!-- /poster -->
     {% endif %}
@@ -13,7 +13,7 @@
 {% block external_title %}
 <!-- result-of-search -->
 <div class="result-of-search">
-    <h4>Записи с меткой {{ tag.name }}</h4>
+    <h4>Записи автора {{ author.name }}</h4>
 </div>
 <!-- /result-of-search -->
 {% endblock %}

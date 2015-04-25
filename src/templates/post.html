@@ -2,6 +2,16 @@
 
 {% block title %}{{ post.title }} – {% endblock title %}
 
+{% block poster %}
+    {% if post.poster %}
+    <!-- poster -->
+    <section class="poster">
+        <div class="poster-content" style="background-image: url({{ post.get_poster.url }});"></div>
+    </section>
+    <!-- /poster -->
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <!-- single-post -->
 <div class="single-post">
@@ -11,13 +21,13 @@
                 <a href="{{ post.author.get_url }}"><img src="{{ post.author.photo }}" alt=""></a>
             </div>
             <ul class="meta-block author-and-time">
-                <li><a href="#" class="author-name">{{ post.author.name }}</a></li>
+                <li><a href="{{ post.author.get_url }}" class="author-name">{{ post.author.name }}</a></li>
                 <li><time>23 Апреля 2015</time></li>
             </ul>
             <nav class="meta-block tags">
-                <a href="">Travel</a>
-                <a href="">Philippines</a>
-                <a href="">Lapu-Lapu</a>
+                {% for tag in post.tags.all %}
+                    <a href="{{ tag.get_url }}">{{ tag }}</a>
+                {% endfor %}
             </nav>
         </div>
     </header>
@@ -33,7 +43,7 @@
     <!-- social -->
     <section class="post-social">
         <h3 class="aside-title">Поделись заметкой с друзьями</h3>
-        <div class="social-likes" data-url="greendog.today" data-title="greendogtoday">
+        <div class="social-likes" data-url="greendog.today{{ post.get_url }}" data-title="{{ post.title }} – greendog.today">
             <div class="facebook" title="Поделиться ссылкой на Фейсбуке">Facebook</div>
             <div class="twitter" data-via="greendogtoday" title="Поделиться ссылкой в Твиттере">Twitter</div>
             <div class="plusone" title="Поделиться ссылкой в Гугл-плюсе">Google+</div>
@@ -65,9 +75,16 @@
     </section>
     <!-- /related-posts -->
 
+    {% if DEBUG == false %}
+        {% include 'in_mobileads.html' %}
+    {% endif %}
+
     <!-- related-posts -->
     <section class="post-comments">
         <h3 class="aside-title">Комментарии</h3>
+        {% if DEBUG == false %}
+            {% include 'in_comments.html' %}
+        {% endif %}
     </section>
     <!-- /related-posts -->
 </aside>

@@ -3,6 +3,7 @@ from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.core.mail import send_mail
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from utils import *
@@ -120,6 +121,21 @@ class AbstractAccount(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """ Send an email to this User."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def get_poster(self):
+        return MakeImage(self.poster, settings.POSTER_THUMBS_SIZE, crop='center')
+
+    def get_mobile_poster(self):
+        return MakeImage(self.poster, settings.POSTER_SMALL_THUMBS_SIZE, crop='center')
+
+    def get_squae_poster(self):
+        return MakeImage(self.poster, settings.SQUARE_THUMBS_SIZE, crop='center')
+
+    def get_content(self):
+        return MakeContent(self.content)
+
+    def get_url(self):
+        return reverse('author', args=(self.slug,))
 
     def save(self, *args, **kwargs):
         if not self.slug:

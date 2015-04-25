@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ post.title }} – {% endblock title %}
+
 {% block content %}
 <!-- single-post -->
 <div class="single-post">
@@ -20,7 +22,7 @@
         </div>
     </header>
     <h2 class="article-title">Some travel in Philippines, when happynes come true</h2>
-    <article>
+    <article class="post-content">
         {{ post.get_content }}
     </article>
 </div>
@@ -47,7 +49,9 @@
             {% for post in related_posts %}
             <li class="side-post">
                 <div class="image">
-                    <img src="{{ post.get_squae_poster.url }}" alt="">
+                    <a href="{{ post.get_url }}">
+                        <img src="{{ post.get_squae_poster.url }}" alt="">
+                    </a>
                 </div>
                 <div>
                     <h3>
@@ -56,7 +60,6 @@
                     <time>23 Апреля 2015</time>
                 </div>
             </li>
-
             {% endfor %}
         </ul>
     </section>

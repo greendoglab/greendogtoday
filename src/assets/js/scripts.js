@@ -20,7 +20,7 @@
     }
 
     function imagePortrait() {
-        var sectionImages = $('img', 'section.post');
+        var sectionImages = $('img', 'article.post-content');
 
         sectionImages.each(function() {
             var image = $(this);

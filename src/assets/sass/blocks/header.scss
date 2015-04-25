@@ -23,6 +23,14 @@
                     display: block;
                 } // sm
             } // &.mobile
+            &.home {
+                @include bp(xs) {
+                    display: block;
+                } // xs
+                @include bp(sm) {
+                    display: block;
+                } // sm
+            } // &.home
             a {
                 text-decoration: none;
                 color: white;
@@ -39,6 +47,18 @@
                         @include inline-middle;
                     } // sm
                 } // &.cheesburger
+                &.home-link {
+                    &:before {
+                        @include icon-fa;
+                        content: '\f015';
+                    } // &:before
+                    @include bp(xs) {
+                        @include inline-middle;
+                    } // xs
+                    @include bp(sm) {
+                        @include inline-middle;
+                    } // sm
+                } // &.home-link
             } // a
             input {
                 padding: 10px;

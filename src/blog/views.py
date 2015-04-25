@@ -1,3 +1,4 @@
+# -*-coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404
 from django.db.models import F
 from blog.models import Post, Tag
@@ -16,7 +17,9 @@ def post(request, slug):
 
 def tag(request, slug):
     template = 'tag.html'
+    tag = get_object_or_404(Tag, slug=slug)
     context = {
-        'post': get_object_or_404(Tag, slug=slug)
+        'tag': tag,
+        'posts': Post.objects.filter(tags__name__in=[tag])
     }
     return render(request, template, context)

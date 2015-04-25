@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} – {% endblock title %}
+
+{% block content %}
+<!-- single-post -->
+<div class="single-post">
+    <h2 class="article-title">{{ post.title }}</h2>
+    <article class="post-content">
+        {{ post.get_content }}
+    </article>
+</div>
+<!-- /single-post -->
+
+<!-- post aside -->
+<aside class="post-aside">
+    <!-- social -->
+    <section class="post-social">
+        <h3 class="aside-title">Поделись заметкой с друзьями</h3>
+        <div class="social-likes" data-url="greendog.today" data-title="greendogtoday">
+            <div class="facebook" title="Поделиться ссылкой на Фейсбуке">Facebook</div>
+            <div class="twitter" data-via="greendogtoday" title="Поделиться ссылкой в Твиттере">Twitter</div>
+            <div class="plusone" title="Поделиться ссылкой в Гугл-плюсе">Google+</div>
+            <div class="pinterest" title="Поделиться картинкой на Пинтересте" data-media="">Pinterest</div>
+        </div>
+    </section>
+    <!-- /social -->
+
+</aside>
+<!-- /post aside -->
+{% endblock content %}

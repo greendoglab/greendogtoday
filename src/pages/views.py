@@ -6,6 +6,6 @@ def page(request, slug):
     template = 'page.html'
 
     context = {
-        'page': get_object_or_404(Page, slug=slug)
+        'post': get_object_or_404(Page, slug=slug)
     }
     return render(request, template, context)

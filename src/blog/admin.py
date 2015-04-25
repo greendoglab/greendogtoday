@@ -54,7 +54,7 @@ class PostAdmin(admin.ModelAdmin):
     )
     list_editable = ('status',)
     readonly_fields = ('views', 'slug')
-    list_display = ('title', 'image_display', 'date', 'get_author_name', 'status')
+    list_display = ('title', 'image_display', 'date', 'get_author_name', 'status', 'views')
     list_per_page = 15
 
     def save_model(self, request, obj, form, change):

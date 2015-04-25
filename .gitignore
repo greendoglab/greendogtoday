@@ -12,6 +12,7 @@ db.*
 *.sqlite
 *.sqlite3
 
+templates/in_*.html
 src/assets/css
 mails/
 media/

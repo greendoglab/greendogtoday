@@ -37,8 +37,10 @@
                 {% endfor %}
             </nav>
         </div>
-        <a href="{{ post.get_url }}" class="poster-small"
-            style="background-image: url({{ post.get_poster.url }});"></a>
+        {% if post.poster %}
+            <a href="{{ post.get_url }}" class="poster-small"
+                style="background-image: url({{ post.get_poster.url }});"></a>
+        {% endif %}
         <h2 class="post-title">
             <a href="{{ post.get_url }}" class="preview-link">{{ post.title }}</a>
         </h2>

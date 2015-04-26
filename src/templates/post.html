@@ -58,11 +58,13 @@
         <ul class="related-bottom">
             {% for post in related_posts %}
             <li class="side-post">
+                {% if post.poster %}
                 <div class="image">
                     <a href="{{ post.get_url }}">
                         <img src="{{ post.get_squae_poster.url }}" alt="">
                     </a>
                 </div>
+                {% endif %}
                 <div class="link">
                     <h3>
                         <a href="{{ post.get_url }}">{{ post.title }}</a>

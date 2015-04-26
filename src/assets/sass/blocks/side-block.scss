@@ -30,6 +30,9 @@
                 } // &.image
                 &.link {
                     width: calc(100% - 70px);
+                    &.full {
+                        width: 100%;
+                    } // &.full
                 } // &.link
             } // > div
             h3 {

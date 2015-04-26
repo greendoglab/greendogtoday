@@ -4,8 +4,10 @@
 
 {% block content %}
 <!-- single-post -->
-<div class="single-post">
-    <h2 class="article-title">{{ post.title }}</h2>
+<div class="post single-post">
+    <header>
+        <h2 class="post-title">{{ post.title }}</h2>
+    </header>
     <article class="post-content">
         {{ post.get_content }}
     </article>

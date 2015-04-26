@@ -5,6 +5,7 @@
     .side-title {
         font-size: rem(18);
         font-weight: bold;
+        margin-top: 0;
     } // side-title
     ul {
         @include clear-list;

@@ -4,7 +4,7 @@
     display: flex;
     flex-flow: row nowrap;
     .content {
-        flex: 1 65%;
+        flex: 1 calc(100% - 315px);
         padding-right: 15px;
         @include bp(xs) {
             padding-right: 0px;
@@ -14,7 +14,7 @@
         } // sm
     } // content
     .site-side {
-        flex: 1 35%;
+        flex: 1 315px;
         padding-left: 15px;
         @include bp(xs) {
             display: none;

@@ -14,24 +14,24 @@
 
 {% block content %}
 <!-- single-post -->
-<div class="single-post">
+<div class="post single-post">
     <header>
         <div class="meta">
             <div class="meta-block author-photo">
                 <a href="{{ post.author.get_url }}"><img src="{{ post.author.photo }}" alt=""></a>
             </div>
-            <ul class="meta-block author-and-time">
-                <li><a href="{{ post.author.get_url }}" class="author-name">{{ post.author.name }}</a></li>
-                <li><time>23 Апреля 2015</time></li>
-            </ul>
+            <div class="meta-block author-and-time">
+                <a href="{{ post.author.get_url }}" class="author-name">{{ post.author.name }}</a>
+                <time>23 Апреля 2015</time>
+            </div>
             <nav class="meta-block tags">
                 {% for tag in post.tags.all %}
                     <a href="{{ tag.get_url }}">{{ tag }}</a>
                 {% endfor %}
             </nav>
         </div>
+        <h2 class="post-title">{{ post.title }}</h2>
     </header>
-    <h2 class="article-title">{{ post.title }}</h2>
     <article class="post-content">
         {{ post.get_content }}
     </article>

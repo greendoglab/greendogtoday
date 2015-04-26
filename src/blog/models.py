@@ -44,7 +44,7 @@ class Post(models.Model):
     date = models.DateTimeField('Date', default=datetime.datetime.now)
     title = models.CharField('Title', max_length=255, help_text='Something goes here')
     content = models.TextField('Content', help_text='Work content Markdown')
-    tags = TaggableManager(through=TaggedItems)
+    tags = TaggableManager(through=TaggedItems, blank=True)
 
     POST_STATUS = (
         ('draft', 'Draft'),

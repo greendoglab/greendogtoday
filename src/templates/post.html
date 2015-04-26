@@ -22,7 +22,7 @@
             </div>
             <div class="meta-block author-and-time">
                 <a href="{{ post.author.get_url }}" class="author-name">{{ post.author.name }}</a>
-                <time>23 Апреля 2015</time>
+                <time>{{ post.date.date }}</time>
             </div>
             <nav class="meta-block tags">
                 {% for tag in post.tags.all %}

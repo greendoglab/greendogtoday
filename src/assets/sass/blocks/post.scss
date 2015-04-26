@@ -2,6 +2,13 @@
     + .post {
         margin-top: 40px;
     } // + .post
+    &.single-post {
+        margin-bottom: 30px;
+    } // &.single-post
+    a.preview-link {
+        text-decoration: none;
+        color: #616161;
+    } // preview-link
     header {
         .meta {
             display: flex;
@@ -60,21 +67,58 @@
             background-size: cover !important;
             background-position: 50% 50% !important;
         } // poster-small
-    } // header
-    .post-preview {
-        .article-title {
+        .post-title {
             font-weight: bold;
             color: black;
             font-size: rem(24);
-        } // article-title
-        .preview-link {
-            text-decoration: none;
-            p {
-                color: #616161;
-                font-size: rem(18);
-                margin: 0;
-                line-height: 1.5;
-            } // p
-        } // preview-link
-    } // post-preview
+        } // post-title
+    } // header
+    article.post-content {
+        color: #616161;
+        font-size: rem(18);
+        line-height: 1.5;
+        p {
+            margin: 0;
+            img {
+                margin: 0 auto;
+            } // img
+        } // p
+        > * + * {
+            margin-top: 20px !important;
+        } // * + *
+        h2, h3, h4, h5, h6 {
+            color: #358340;
+        } // h2, h3, h4, h5, h6
+        table {
+            width: 100%;
+            margin: auto;
+            margin-bottom: 1em;
+            tr {
+                th {
+                    font-weight: 700;
+                } // th
+                th, td {
+                    text-align: center;
+                    vertical-align: middle;
+                    padding: .2em;
+                    margin: 0;
+                    background: #ecf0f1;
+                } // th, td
+                &:hover {
+                    td {
+                        background: #d5d5d5;
+                    } // td
+                } // &:hover
+            } // tr
+        } // table
+        blockquote {
+            margin: 0;
+            padding: 0.3em 1em;
+            border-left: 8px solid rgba(111, 163, 116, 1);
+        } // blockquote
+        .mediadesc, .mdesc {
+            text-align: center;
+            font-style: italic;
+        } // mediadesc, mdesc
+    } // article
 } // post

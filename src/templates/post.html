@@ -69,7 +69,7 @@
                     <h3>
                         <a href="{{ post.get_url }}">{{ post.title }}</a>
                     </h3>
-                    <time>23 Апреля 2015</time>
+                    <time>{{ post.date.date }}</time>
                 </div>
             </li>
             {% endfor %}

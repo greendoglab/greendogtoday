@@ -80,7 +80,7 @@ SQUARE_THUMBS_SIZE = '400x400'
 
 # pagination
 ENDLESS_PAGINATION_PER_PAGE = 4
-ENDLESS_PAGINATION_LOADING = """<div class="loader"><span class="loader-spiner"></span></div>"""
+ENDLESS_PAGINATION_LOADING = """<div class="loader"><span class="loader-spinner"></span></div>"""
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

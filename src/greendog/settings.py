@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     # 'django.contrib.staticfiles',
+    'endless_pagination',
     'sorl.thumbnail',
     'accounts',
     'blog',
@@ -53,6 +54,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'greendog.context_processors.debug',
+    'django.core.context_processors.request',
 )
 
 # INTERNAL_IPS = ('127.0.0.1',)
@@ -75,6 +77,10 @@ SEARCHABLE_OBJECTS = [
 POSTER_THUMBS_SIZE = '1280x900'
 POSTER_SMALL_THUMBS_SIZE = '640x360'
 SQUARE_THUMBS_SIZE = '400x400'
+
+# pagination
+ENDLESS_PAGINATION_PER_PAGE = 10
+ENDLESS_PAGINATION_LOADING = """<div class="loader"><span class="loader-spinner"></span></div>"""
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

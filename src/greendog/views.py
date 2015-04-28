@@ -1,5 +1,7 @@
 # -*-coding: utf-8 -*-
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render_to_response
+from django.template import RequestContext
+from endless_pagination.decorators import page_template
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
 from itertools import chain
@@ -9,17 +11,23 @@ from django.core.urlresolvers import reverse
 from blog.models import Post
 
 
-def HomeView(request):
-    template = 'index.html'
+@page_template('posts_template.html')
+def HomeView(
+        request,
+        template='index.html',
+        extra_context=None):
 
     context = {
-        'posts': Post.objects.all(),
+        'posts': Post.objects.all()
     }
-    return render(request, template, context)
+    if extra_context is not None:
+        context.update(extra_context)
+    return render_to_response(
+        template, context, context_instance=RequestContext(request))
 
 
-def SearchView(request):
-    template_name = 'search_results.html'
+@page_template('posts_template.html')
+def SearchView(request, template='search_results.html', extra_context=None):
 
     q = request.GET.get('q', None)
     if q is None or q == '':
@@ -38,9 +46,15 @@ def SearchView(request):
 
     objects = list(object_list)
 
-    context = {'posts': objects, 'q': q}
-    template = template_name
-    return render(request, template, context)
+    context = {
+        'posts': objects,
+        'q': q
+    }
+
+    if extra_context is not None:
+        context.update(extra_context)
+    return render_to_response(
+        template, context, context_instance=RequestContext(request))
 
 
 class AllFeed(Feed):

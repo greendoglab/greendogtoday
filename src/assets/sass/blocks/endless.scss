@@ -1,0 +1,32 @@
+.endless_more {
+    display: block;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+} // endless_more
+
+.more-text {
+    @include inline-middle;
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 20px;
+    font-size: rem(20);
+    line-height: 1;
+} // more-text
+
+.loader {
+    padding: 20px;
+    min-height: 30px;
+    text-align: center;
+    .loader-spinner {
+        @include inline-middle;
+        font-size: 20px;
+        font-size: rem(20);
+        &:before {
+            animation: Spin .8s linear infinite;
+            @include icon-fa;
+            content: '\f110';
+        } // &:before
+    } // .loader-spinner
+} // loader

@@ -79,7 +79,11 @@ SQUARE_THUMBS_SIZE = '400x400'
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Europe/Kiev'
+
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'RU-ru'
 
 TIME_ZONE = 'UTC'
 

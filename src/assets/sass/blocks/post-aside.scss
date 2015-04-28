@@ -1,11 +1,13 @@
 .post-aside {
     > * + * {
-        margin-top: 40px;
+        margin-top: 20px;
     } // > * + *
-    * {
+    > * {
+        border-top: 1px solid rgb(216, 216, 216);
+        padding-top: 20px;
         .aside-title {
             font-size: rem(18);
             font-weight: bold;
         } // h3
-    }
+    } // *
 } // post-aside

@@ -6,6 +6,7 @@ from django.conf import settings
 from utils import *
 from taggit.managers import TaggableManager
 from taggit.models import TagBase, GenericTaggedItemBase
+from django.utils import text
 import re
 
 
@@ -69,11 +70,10 @@ class Post(models.Model):
         return MakeImage(self.poster, settings.SQUARE_THUMBS_SIZE, crop='center')
 
     def get_short_content(self):
-        content_truncate = MakeContent(self.content)
-        content_truncate = re.sub('<[^>]*>', '', content_truncate)
-        content_truncate = re.sub(r'<img.*?/>', '', content_truncate)
-        content_truncate = content_truncate[:180] + "..."
-        return MakeContent(content_truncate)
+        content = MakeContent(self.content)
+        content = re.sub('<[^>]*>', '', content)
+        content = re.sub(r'<img.*?/>', '', content)
+        return text.Truncator(content).words(40, html=True, truncate=' ...')
 
     def get_content(self):
         return MakeContent(self.content)

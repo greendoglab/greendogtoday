@@ -79,7 +79,7 @@ POSTER_SMALL_THUMBS_SIZE = '640x360'
 SQUARE_THUMBS_SIZE = '400x400'
 
 # pagination
-ENDLESS_PAGINATION_PER_PAGE = 4
+ENDLESS_PAGINATION_PER_PAGE = 10
 ENDLESS_PAGINATION_LOADING = """<div class="loader"><span class="loader-spinner"></span></div>"""
 
 # Internationalization

@@ -1,5 +1,7 @@
 # -*-coding: utf-8 -*-
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
+from django.template import RequestContext
+from endless_pagination.decorators import page_template
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
 from itertools import chain
@@ -9,13 +11,18 @@ from django.core.urlresolvers import reverse
 from blog.models import Post
 
 
-def HomeView(request):
-    template = 'index.html'
-
+@page_template('posts_template.html')
+def HomeView(
+        request,
+        template='index.html',
+        extra_context=None):
     context = {
-        'posts': Post.objects.all(),
+        'posts': Post.objects.all()
     }
-    return render(request, template, context)
+    if extra_context is not None:
+        context.update(extra_context)
+    return render_to_response(
+        template, context, context_instance=RequestContext(request))
 
 
 def SearchView(request):

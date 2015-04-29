@@ -18,7 +18,7 @@ def HomeView(
         extra_context=None):
 
     context = {
-        'posts': Post.objects.all()
+        'posts': Post.objects.all().filter(status="published")
     }
     if extra_context is not None:
         context.update(extra_context)
@@ -39,9 +39,9 @@ def SearchView(request, template='search_results.html', extra_context=None):
              Q(content__istartswith=q) | Q(content__icontains=q))
 
     models = ContentType.objects.filter(
-        model__in=settings.SEARCHABLE_OBJECTS).all()
+        model__in=settings.SEARCHABLE_OBJECTS).filter(status="published")
     for model in models:
-        obj = model.get_all_objects_for_this_type().filter(query).all()
+        obj = model.get_all_objects_for_this_type().filter(query).filter(status="published")
         object_list = chain(object_list, obj)
 
     objects = list(object_list)
@@ -63,7 +63,7 @@ class AllFeed(Feed):
     description = "Путешествия"
 
     def items(self):
-        return Post.objects.all()[:10]
+        return Post.objects.filter(status="published")[:10]
 
     def item_title(self, item):
         return item.title

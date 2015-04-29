@@ -1,17 +1,18 @@
 # -*-coding: utf-8 -*-
 from django.db import models
 from django.core.urlresolvers import reverse
-import datetime
+from django.contrib.auth.models import User
 from django.conf import settings
-from utils import *
-from taggit.managers import TaggableManager
-from taggit.models import TagBase, GenericTaggedItemBase
 from django.utils import text
+from utils import *
 import re
+import datetime
 
 
-class Tag(TagBase):
+class Tag(models.Model):
     poster = models.CharField('Poster', max_length=1000, help_text='Image url', blank=True)
+    slug = models.SlugField('Link', unique=True, max_length=255, help_text='Link', blank=True)
+    title = models.CharField('Title', max_length=255, help_text='Something goes here')
     content = models.TextField('Content', help_text='Markdown', blank=True)
 
     def get_poster(self):
@@ -35,17 +36,13 @@ class Tag(TagBase):
         super(Tag, self).save(*args, **kwargs)
 
 
-class TaggedItems(GenericTaggedItemBase):
-    tag = models.ForeignKey(Tag, related_name="%(app_label)s_%(class)s_items")
-
-
 class Post(models.Model):
     poster = models.CharField('Poster', max_length=1000, help_text='Image url', blank=True)
     slug = models.SlugField('Link', unique=True, max_length=255, help_text='Link', blank=True)
     date = models.DateTimeField('Date', default=datetime.datetime.now)
     title = models.CharField('Title', max_length=255, help_text='Something goes here')
     content = models.TextField('Content', help_text='Work content Markdown')
-    tags = TaggableManager(through=TaggedItems, blank=True)
+    tags = models.ManyToManyField('Tag', related_name='Tag', blank=True)
 
     POST_STATUS = (
         ('draft', 'Draft'),
@@ -55,7 +52,7 @@ class Post(models.Model):
 
     views = models.PositiveIntegerField(default=0)
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
+    author = models.ForeignKey(User, null=True, blank=True)
 
     def __unicode__(self):
         return self.title

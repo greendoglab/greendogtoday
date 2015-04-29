@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     # 'django.contrib.staticfiles',
     'endless_pagination',
     'sorl.thumbnail',
-    'accounts',
+    'profiles',
     'blog',
     'pages',
     'pagedown'
@@ -66,8 +66,6 @@ WSGI_APPLICATION = 'greendog.wsgi.application'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
-
-AUTH_USER_MODEL = 'accounts.Account'
 
 SEARCHABLE_OBJECTS = [
     'post',

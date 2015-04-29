@@ -6,10 +6,10 @@
     <header>
         <div class="meta">
             <div class="meta-block author-photo">
-                <a href="{{ post.author.get_url }}"><img src="{{ post.author.photo }}" alt=""></a>
+                <a href="{{ post.author.profile.get_url }}"><img src="{{ post.author.profile.get_photo.url }}" alt=""></a>
             </div>
             <div class="meta-block author-and-time">
-                <a href="{{ post.author.get_url }}" class="author-name">{{ post.author.name }}</a>
+                <a href="{{ post.author.profile.get_url }}" class="author-name">{{ post.author.profile.name }}</a>
                 <time>{{ post.date.date }}</time>
             </div>
             <nav class="meta-block tags">

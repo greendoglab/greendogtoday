@@ -15,6 +15,9 @@ class Tag(models.Model):
     title = models.CharField('Title', max_length=255, help_text='Something goes here')
     content = models.TextField('Content', help_text='Markdown', blank=True)
 
+    def __unicode__(self):
+        return self.title
+
     def get_poster(self):
         return MakeImage(self.poster, settings.POSTER_THUMBS_SIZE, crop='center')
 

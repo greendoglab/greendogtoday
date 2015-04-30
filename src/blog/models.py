@@ -32,7 +32,7 @@ class Tag(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = MakeSlug(self.name)
+            self.slug = MakeSlug(self.title)
         super(Tag, self).save(*args, **kwargs)
 
 

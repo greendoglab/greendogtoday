@@ -25,7 +25,7 @@ def tag(request, slug, template='tag.html', extra_context=None):
     tag = get_object_or_404(Tag, slug=slug)
     context = {
         'tag': tag,
-        'posts': Post.objects.filter(tags__name__in=[tag]).filter(status="published")
+        'posts': Post.objects.filter(tags=tag).filter(status="published")
     }
     if extra_context is not None:
         context.update(extra_context)

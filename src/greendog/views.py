@@ -39,7 +39,7 @@ def SearchView(request, template='search_results.html', extra_context=None):
              Q(content__istartswith=q) | Q(content__icontains=q))
 
     models = ContentType.objects.filter(
-        model__in=settings.SEARCHABLE_OBJECTS).filter(status="published")
+        model__in=settings.SEARCHABLE_OBJECTS)
     for model in models:
         obj = model.get_all_objects_for_this_type().filter(query).filter(status="published")
         object_list = chain(object_list, obj)

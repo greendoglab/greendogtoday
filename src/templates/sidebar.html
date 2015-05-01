@@ -11,7 +11,7 @@
 
 <!-- side-block -->
 <div class="side-block">
-    {% if DEBUG == False %}
+    {% if not DEBUG %}
         {% include 'in_sideads.html' %}
     {% endif %}
 </div>
@@ -19,7 +19,7 @@
 
 <!-- side-block -->
 <div class="side-block">
-    {% if DEBUG == False %}
+    {% if not DEBUG %}
         {% include 'in_sideads_big.html' %}
     {% endif %}
 </div>

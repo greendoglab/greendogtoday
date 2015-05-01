@@ -77,14 +77,14 @@
     </section>
     <!-- /related-posts -->
 
-    {% if DEBUG == false %}
+    {% if not DEBUG %}
         {% include 'in_mobileads.html' %}
     {% endif %}
 
     <!-- related-posts -->
     <section class="post-comments">
         <h3 class="aside-title">Комментарии</h3>
-        {% if DEBUG == false %}
+        {% if not DEBUG %}
             {% include 'in_comments.html' %}
         {% endif %}
     </section>

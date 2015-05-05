@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
+{% block social_cards %}
+<meta name="og:url" content="http://greendog.today{{ post.get_url }}" />
+<meta name="og:image" content="http://greendog.today{{ post.get_mobile_poster.url }}" />
+<meta name="og:title"  content="{{ post.title }}" />
+<meta name="og:description" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@greendogtoday" />
+<meta name="twitter:image" content="http://greendog.today{{ post.get_mobile_poster.url }}" />
+<meta name="twitter:title" content="{{ post.title }}" />
+<meta name="twitter:description" content="" />
+{% endblock %}
+
 {% block title %}{{ post.title }} – {% endblock title %}
 
 {% block poster %}

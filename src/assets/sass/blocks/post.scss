@@ -117,6 +117,19 @@
             padding: 0.3em 1em;
             border-left: 8px solid rgba(111, 163, 116, 1);
         } // blockquote
+        .pics-group {
+            @include table;
+            .pic {
+                @include table-cell;
+                padding: .5em;
+                &:nth-child(1) {
+                    padding-left: 0;
+                }
+                &:nth-last-child(1) {
+                    padding-right: 0;
+                }
+            } // .pic
+        } // pics-group
         .mediadesc, .mdesc {
             text-align: center;
             font-style: italic;
